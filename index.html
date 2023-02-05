@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css" media="all">
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            min-height: 100vh;
+        }
+
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .details {
+            padding: 0.5rem 1rem;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-weight: 2rem;
+            font-size: 1rem;
+        }
+
+        .close {
+            color: red;
+            font-weight: 900;
+            font-size: 1.5rem;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+    <center>
+        <h1>Cell Counter</h1>
+    </center>
+    <br>
+    <br>
+    <dialog>
+        <span class="close">&times;</span>
+    </dialog>
+
+
+
+    <div class="container grid">
+
+    </div>
+    <button type="button" class="details btn">i</button>
+
+
+</body>
+
+</html>
