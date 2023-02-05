@@ -1964,12 +1964,12 @@ input[type=radio]:checked {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
   text-align: center;
 }
 .grid + .grid {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 nav:default {

@@ -16,6 +16,7 @@ class Counter {
 
 const container = document.querySelector('.container')
 
+// create a new cell
 function createCell(name) {
     const cnt = new Counter(name);
     const cell = document.createElement("div")
@@ -52,29 +53,44 @@ function createCell(name) {
 
 
 }
+// sum all the cells in the html files
 function sumCells() {
     let cells = Array.from(document.querySelectorAll('.cell h2'))
     let sum = 0
-    let info = Object.create({})
     cells.forEach((c) => {
         sum += parseInt(c.innerHTML)
-        info.c = parseInt(c.innerHTML)
-        info.total = sum
     })
-    console.log(info)
-    return sum
+    const info = new Map()
+    for (let i = 0; i < cells.length; i++) {
+        info.set(cells[i].parentElement.firstElementChild.textContent, parseInt(cells[i].innerHTML))
+
+    }
+    info.set("total", sum)
+    const res = Object.fromEntries(info)
+    return res
+
+}
+
+function createNew(name) {
+    const c = createCell(name)
+    return c
 
 }
 
 
 
-const c1 = createCell("cell-1")
-const c2 = createCell("cell-2")
-const c3 = createCell("cell-3")
-const c4 = createCell("cell-4")
-const c5 = createCell("cell-5")
-const c6 = createCell("cell-6")
-const c7 = createCell("cell-7")
+const addBtn = document.querySelector('.add')
+const cellInput = document.querySelector('input')
+addBtn.addEventListener("click", function(e) {
+    e.preventDefault()
+    createNew(cellInput.value)
+    cellInput.value = ""
+
+
+})
+
+
+//total related things
 const details = document.querySelector('.details')
 const total = document.createElement("b")
 const close = document.querySelector('.close')
@@ -89,10 +105,11 @@ close.addEventListener('click', (e) => {
 
 details.addEventListener("click", function(e) {
     e.preventDefault()
+    const sums = sumCells()
     dialog.setAttribute("open", "")
-    const tmp=`
+    const tmp = `
     <center>
-    <p>total: ${sumCells()}</p>
+    <p>total: ${sums.total}</p>
     </center>
     `
 
