@@ -67,6 +67,8 @@ function sumCells() {
     }
     info.set("total", sum)
     const res = Object.fromEntries(info)
+    console.log(res)
+    localStorage.setItem("info", JSON.stringify(res))
     return res
 
 }
@@ -106,18 +108,25 @@ close.addEventListener('click', (e) => {
 details.addEventListener("click", function(e) {
     e.preventDefault()
     const sums = sumCells()
+    console.log(localStorage.getItem("info"))
     dialog.setAttribute("open", "")
     const tmp = `
     <center>
-    <p>total: ${sums.total}</p>
+    <ul>
+        ${Object.keys(sums).map((k) => "<li>" + k + ": " + sums[k] + "</li>")}
+    </ul>
     </center>
     `
 
     // total.textContent = sumCells()
     dialog.innerHTML = tmp
     document.body.appendChild(total)
-    console.log(total.outerHTML)
 
+})
+
+const cc = ["Monocyte", "Lymphocyte", "Eosinophile", "Promyelocyte", "Pnn", "Monoblaste", "Blaste", "Myelocyte", "Basophile", "Promonocyte", "Myeloblaste", "Erythroblaste", "reticulocyte", "hematie"]
+cc.map((c) => {
+    createCell(c)
 })
 
 
