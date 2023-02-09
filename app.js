@@ -62,7 +62,10 @@ function sumCells() {
     })
     const info = new Map()
     for (let i = 0; i < cells.length; i++) {
-        info.set(cells[i].parentElement.firstElementChild.textContent, parseInt(cells[i].innerHTML))
+        if (parseInt(cells[i].innerHTML) != 0) {
+
+            info.set(cells[i].parentElement.firstElementChild.textContent, parseInt(cells[i].innerHTML))
+        }
 
     }
     info.set("total", sum)
@@ -85,7 +88,9 @@ const addBtn = document.querySelector('.add')
 const cellInput = document.querySelector('input')
 addBtn.addEventListener("click", function(e) {
     e.preventDefault()
-    createNew(cellInput.value)
+    if (cellInput.value.trim()) {
+        createNew(cellInput.value)
+    }
     cellInput.value = ""
 
 
@@ -95,14 +100,19 @@ addBtn.addEventListener("click", function(e) {
 //total related things
 const details = document.querySelector('.details')
 const total = document.createElement("b")
-const close = document.querySelector('.close')
+const close = document.querySelector('.close_new')
 const dialog = document.querySelector('dialog')
+const new_D = document.querySelector('.new')
+const new_cell = document.querySelector('.new-cell')
 
+new_cell.addEventListener("click", function() {
+    new_D.setAttribute("open", true)
+})
 
 
 close.addEventListener('click', (e) => {
     e.preventDefault()
-    dialog.removeAttribute("open")
+    new_D.removeAttribute("open")
 })
 
 details.addEventListener("click", function(e) {
