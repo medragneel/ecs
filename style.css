@@ -61,7 +61,7 @@ input, textarea {
   background-color: hsl(211deg, 90%, 50%);
   border-radius: 8px;
   border: none;
-  padding: 1rem;
+  padding: 0.5rem 0.75rem;
   outline: none;
   cursor: pointer;
 }
@@ -80,7 +80,7 @@ input, textarea {
 }
 .card {
   display: block;
-  padding: 1rem;
+  padding: 2rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
@@ -101,7 +101,7 @@ input, textarea {
   font-weight: bold;
 }
 .m-1 {
-  margin: 0.75rem;
+  margin: 0.5rem;
 }
 
 .m-2 {
@@ -125,8 +125,8 @@ input, textarea {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 5px;
 }
 
 .details {
@@ -213,9 +213,16 @@ table th, table td {
     border-bottom: 0;
   }
 }
-.new{padding: 30px;margin: 0 auto;}
+.new{
+    padding: 20px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 50%;
+    z-index:50;
+}
 .new .d-input{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
 }
+

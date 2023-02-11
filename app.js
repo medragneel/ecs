@@ -21,7 +21,7 @@ function createCell(name) {
     const cnt = new Counter(name);
     const cell = document.createElement("div")
     cell.setAttribute("class", `card cell ${name}`)
-    const title = document.createElement("h1")
+    const title = document.createElement("h3")
     const counter = document.createElement("h2")
     counter.innerHTML = cnt.count
     title.innerHTML = cnt.name
@@ -42,6 +42,7 @@ function createCell(name) {
 
     })
 
+    
 
     cell.appendChild(title)
     cell.appendChild(counter)
@@ -71,7 +72,6 @@ function sumCells() {
     info.set("total", sum)
     const res = Object.fromEntries(info)
     console.log(res)
-    localStorage.setItem("info", JSON.stringify(res))
     return res
 
 }
@@ -118,7 +118,7 @@ close.addEventListener('click', (e) => {
 details.addEventListener("click", function(e) {
     e.preventDefault()
     const sums = sumCells()
-    console.log(localStorage.getItem("info"))
+
     dialog.setAttribute("open", "")
     const tmp = `
     <center>
@@ -129,6 +129,7 @@ details.addEventListener("click", function(e) {
     `
 
     // total.textContent = sumCells()
+    localStorage.setItem("info", JSON.stringify(sums))
     dialog.innerHTML = tmp
     document.body.appendChild(total)
 
@@ -139,3 +140,6 @@ cc.map((c) => {
     createCell(c)
 })
 
+
+const logo = "___  ___           _             _     \n|  \\/  |          | |           | |    \n| .  . |  ___   __| | _ __ ___  | |__  \n| |\\/| | / _ \\ / _` || '_ ` _ \\ | '_ \\ \n| |  | ||  __/| (_| || | | | | || | | |\n\\_|  |_/ \\___| \\__,_||_| |_| |_||_| |_|\n                                       \n                                       " 
+console.log("%c" + logo,"color: #f3bd5a;")

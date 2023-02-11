@@ -2,7 +2,7 @@
     "short_name":"Ecs",
     "name":"Ecs Cells Counter",
     "theme_color": "#f1f1f1",
-    "background_color": "#f1f1f1",
+    "background_color": "#1b1818",
     "display": "standalone",
     "scope": "./",
     "start_url": "./",
