@@ -226,3 +226,6 @@ table th, table td {
     flex-direction: column;
 }
 
+.hide{
+    display: none;
+}

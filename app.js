@@ -16,6 +16,8 @@ class Counter {
 
 const container = document.querySelector('.container')
 
+const cells = []
+
 // create a new cell
 function createCell(name) {
     const cnt = new Counter(name);
@@ -42,18 +44,23 @@ function createCell(name) {
 
     })
 
-    
+
 
     cell.appendChild(title)
     cell.appendChild(counter)
     cell.appendChild(incBtn)
     cell.appendChild(decBtn)
-
     container.appendChild(cell)
+
+    cells.push(cnt.name)
     return cnt
 
 
 }
+
+
+
+
 // sum all the cells in the html files
 function sumCells() {
     let cells = Array.from(document.querySelectorAll('.cell h2'))
@@ -72,6 +79,7 @@ function sumCells() {
     info.set("total", sum)
     const res = Object.fromEntries(info)
     console.log(res)
+
     return res
 
 }
@@ -84,14 +92,18 @@ function createNew(name) {
 
 
 
+
 const addBtn = document.querySelector('.add')
 const cellInput = document.querySelector('input')
+
+
 addBtn.addEventListener("click", function(e) {
     e.preventDefault()
     if (cellInput.value.trim()) {
         createNew(cellInput.value)
     }
     cellInput.value = ""
+    localStorage.setItem("cells", JSON.stringify(cells))
 
 
 })
@@ -135,11 +147,13 @@ details.addEventListener("click", function(e) {
 
 })
 
-const cc = ["Monocyte", "Lymphocyte", "Eosinophile", "Promyelocyte", "Pnn", "Monoblaste", "Blaste", "Myelocyte", "Basophile", "Promonocyte", "Myeloblaste", "Erythroblaste", "reticulocyte", "hematie"]
-cc.map((c) => {
+
+// const cc = ["Monocyte", "Lymphocyte", "Eosinophile", "Promyelocyte", "Pnn", "Monoblaste", "Blaste", "Myelocyte", "Basophile", "Promonocyte", "Myeloblaste", "Erythroblaste", "reticulocyte", "hematie"]
+JSON.parse(localStorage.getItem("cells"))?.map((c) => {
     createCell(c)
 })
 
 
-const logo = "___  ___           _             _     \n|  \\/  |          | |           | |    \n| .  . |  ___   __| | _ __ ___  | |__  \n| |\\/| | / _ \\ / _` || '_ ` _ \\ | '_ \\ \n| |  | ||  __/| (_| || | | | | || | | |\n\\_|  |_/ \\___| \\__,_||_| |_| |_||_| |_|\n                                       \n                                       " 
-console.log("%c" + logo,"color: #f3bd5a;")
+
+const logo = "___  ___           _             _     \n|  \\/  |          | |           | |    \n| .  . |  ___   __| | _ __ ___  | |__  \n| |\\/| | / _ \\ / _` || '_ ` _ \\ | '_ \\ \n| |  | ||  __/| (_| || | | | | || | | |\n\\_|  |_/ \\___| \\__,_||_| |_| |_||_| |_|\n                                       \n                                       "
+console.log("%c" + logo, "color: #f3bd5a;")
