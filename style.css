@@ -229,3 +229,21 @@ table th, table td {
 .hide{
     display: none;
 }
+#draggable {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background-color: #f00;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+

@@ -13,7 +13,6 @@ class Counter {
     }
 
 }
-
 const container = document.querySelector('.container')
 
 const cells = []
@@ -23,6 +22,7 @@ function createCell(name) {
     const cnt = new Counter(name);
     const cell = document.createElement("div")
     cell.setAttribute("class", `card cell ${name}`)
+    cell.setAttribute("draggable", true)
     const title = document.createElement("h3")
     const counter = document.createElement("h2")
     counter.innerHTML = cnt.count
@@ -152,6 +152,45 @@ details.addEventListener("click", function(e) {
 JSON.parse(localStorage.getItem("cells"))?.map((c) => {
     createCell(c)
 })
+
+
+// drag and drop
+const dragabble = document.querySelectorAll('.cell')
+dragabble.forEach(element => {
+
+    element.addEventListener("dragstart", (e) => {
+        console.log("dragging")
+        dragged = e.target
+
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', e.target.innerHTML);
+
+    })
+
+
+    element.addEventListener("dragover", (e) => {
+        e.preventDefault()
+        return
+    })
+
+    element.addEventListener('drop', (e) => {
+        e.preventDefault()
+        if (dragged !== e.currentTarget) {
+            dragged.innerHTML = e.currentTarget.innerHTML;
+            e.currentTarget.innerHTML = e.dataTransfer.getData('text/html');
+        }
+
+    });
+    element.addEventListener("dragend", (e) => {
+        e.dataTransfer.setData("text/plain", e.target.id)
+
+    })
+})
+
+
+
+
+
 
 
 
